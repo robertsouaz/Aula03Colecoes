@@ -1,0 +1,14 @@
+C:\Users\Beto\Documents\Aula03Colecoes\bin\Debug\net8.0\Aula03Colecoes.exe
+C:\Users\Beto\Documents\Aula03Colecoes\bin\Debug\net8.0\Aula03Colecoes.deps.json
+C:\Users\Beto\Documents\Aula03Colecoes\bin\Debug\net8.0\Aula03Colecoes.runtimeconfig.json
+C:\Users\Beto\Documents\Aula03Colecoes\bin\Debug\net8.0\Aula03Colecoes.dll
+C:\Users\Beto\Documents\Aula03Colecoes\bin\Debug\net8.0\Aula03Colecoes.pdb
+C:\Users\Beto\Documents\Aula03Colecoes\obj\Debug\net8.0\Aula03Colecoes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Beto\Documents\Aula03Colecoes\obj\Debug\net8.0\Aula03Colecoes.AssemblyInfoInputs.cache
+C:\Users\Beto\Documents\Aula03Colecoes\obj\Debug\net8.0\Aula03Colecoes.AssemblyInfo.cs
+C:\Users\Beto\Documents\Aula03Colecoes\obj\Debug\net8.0\Aula03Colecoes.csproj.CoreCompileInputs.cache
+C:\Users\Beto\Documents\Aula03Colecoes\obj\Debug\net8.0\Aula03Colecoes.dll
+C:\Users\Beto\Documents\Aula03Colecoes\obj\Debug\net8.0\refint\Aula03Colecoes.dll
+C:\Users\Beto\Documents\Aula03Colecoes\obj\Debug\net8.0\Aula03Colecoes.pdb
+C:\Users\Beto\Documents\Aula03Colecoes\obj\Debug\net8.0\Aula03Colecoes.genruntimeconfig.cache
+C:\Users\Beto\Documents\Aula03Colecoes\obj\Debug\net8.0\ref\Aula03Colecoes.dll
