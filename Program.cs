@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.ComponentModel;
 using Aula03Colecoes.Models;
  using Aula03Colecoes.Models.Enuns;
@@ -25,27 +25,107 @@ using Aula03Colecoes.Models;
         int opcaoEscolhida = 0;
         do
         {
-        Console.WriteLine("=================================================="); 
-        Console.WriteLine("---Digite o número referente a opção desejada: ---");  
-        Console.WriteLine("1 - Obter Por Id");
-        Console.WriteLine("==================================================");  
-        Console.WriteLine("-----Ou tecle qualquer outro número para sair-----");  
-        Console.WriteLine("==================================================");  
-        opcaoEscolhida = int.Parse(Console.ReadLine());
+        Console.WriteLine("\n===== MENU =====");
+        Console.WriteLine("1 - Obter Funcionário por Nome");
+        Console.WriteLine("2 - Obter Funcionários Recentes");
+        Console.WriteLine("3 - Obter Estatísticas");
+        Console.WriteLine("4 - Validar Salário e Admissão");
+        Console.WriteLine("5 - Validar Nome");
+        Console.WriteLine("6 - Obter Funcionários por Tipo");
+        Console.WriteLine("0 - Sair");
+        Console.Write("\nEscolha uma opção: ");  
+        if (!int.TryParse(Console.ReadLine(), out opcaoEscolhida))
+        {
+            Console.WriteLine("Entrada inválida! Por favor, insira um número.");
+            opcaoEscolhida = -1; // Define um valor inválido para evitar execução de opções.
+        }
         string mensagem = string.Empty;
         switch (opcaoEscolhida)
         {
-        case 1:
-        ObterPorId();
-        break;
-        default:
-        Console.WriteLine("Saindo do sistema....");
-        break;
+        case 1: ObterPorNome(); break;
+        case 2: ObterFuncionariosRecentes(); break;
+        case 3: ObterEstatisticas(); break;
+        case 4: ValidarSalarioAdmissao(); break;
+        case 5: ValidarNome(); break;
+        case 6: ObterPorTipo(); break;
+        case 0: Console.WriteLine("Saindo..."); break;
+        default: Console.WriteLine("Opção inválida!"); break;
         }
         } while (opcaoEscolhida >= 1 && opcaoEscolhida <= 10);
         Console.WriteLine("==================================================");  
         Console.WriteLine("* Obrigado por utilizar o sistema e volte sempre *");  
         Console.WriteLine("==================================================");  
+        }
+        public static void ObterPorNome()
+        {
+            Console.Write("Digite o nome do funcionário: ");
+            string nome = Console.ReadLine() ?? string.Empty;
+            var funcionario = lista.FirstOrDefault(f => f.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
+
+            if (funcionario != null)
+                Console.WriteLine($"Funcionário encontrado: {funcionario.Nome}, Salário: {funcionario.Salario:C}");
+            else
+                Console.WriteLine("Funcionário não encontrado.");
+        }
+        public static void ObterFuncionariosRecentes()
+        {
+            lista = lista.Where(f => f.Id >= 4).OrderByDescending(f => f.Salario).ToList();
+            ExibirLista();
+        }
+
+        public static void ObterEstatisticas()
+        {
+            Console.WriteLine($"Quantidade de funcionários: {lista.Count}");
+            Console.WriteLine($"Soma total dos salários: {lista.Sum(f => f.Salario):C}");
+        }
+
+        public static void ValidarSalarioAdmissao()
+        {
+            foreach (var f in lista)
+            {
+                if (f.Salario <= 0 || f.DataAdmissao > DateTime.Now)
+                {
+                    Console.WriteLine($"Erro no funcionário {f.Nome}: Salário inválido ou Data de Admissão incorreta.");
+                }
+            }
+        }
+
+        public static void ValidarNome()
+        {
+            foreach (var f in lista)
+            {
+                if (f.Nome.Length < 2)
+                {
+                    Console.WriteLine($"Erro: Nome do funcionário {f.Nome} tem menos de 2 caracteres!");
+                }
+            }
+        }
+
+        public static void ObterPorTipo()
+        {
+            Console.Write("Digite o tipo de funcionário (CLT = 1, Aprendiz = 2, Estagiário = 3): ");
+            Console.Write("Digite o tipo de funcionário (CLT = 1, Aprendiz = 2, Estagiário = 3): ");
+            string? input = Console.ReadLine();
+            if (!int.TryParse(input, out int tipo))
+            {
+                Console.WriteLine("Entrada inválida! Por favor, insira um número válido.");
+                return;
+            }
+
+            var funcionariosFiltrados = lista.Where(f => (int)f.TipoFuncionarios == tipo).ToList();
+
+            if (funcionariosFiltrados.Any())
+            {
+                Console.WriteLine("\nFuncionários Encontrados:");
+                foreach (var f in funcionariosFiltrados)
+                {
+                    Console.WriteLine($"{f.Nome} - {f.TipoFuncionarios}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum funcionário encontrado para esse tipo.");
+            }
         }
 
         public static void ObterPorId()
